@@ -1,0 +1,41 @@
+---
+title: "final_exam_exercise"
+author: "Howie Rosen"
+date: "March 6, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Get the data
+
+First we read in the file
+
+```{r read_in_tab_sep_file}
+gapM <- read.table(file = "output/combined_gapMinder.tsv", header = TRUE, sep = "\t")
+```
+
+## Choose countries
+
+Then we choose three countries to examine
+
+```{r choose_countries, echo=FALSE}
+canada <- subset(gapM, (gapM$country=="Canada"))
+unitstates <- subset(gapM, (gapM$country=="United States"))
+mexico <- subset(gapM, (gapM$country=="Mexico"))
+```
+
+## Plot GDP
+
+Now we will plot the GDP by year for the three countries we chose
+We can see in the plots that GDP goes up for each country by year
+
+```{r plot_GDP}
+plot(x=canada$year, y=canada$gdpPercap, xlab="year", ylab="GDP", main="GDP by Year, Canada" )
+plot(x=unitstates$year, y=unitstates$gdpPercap, xlab="year", ylab="GDP", main="GDP by Year, United States" )
+plot(x=mexico$year, y=mexico$gdpPercap, xlab="year", ylab="GDP", main="GDP by Year, Mexico" )
+```
+
+
