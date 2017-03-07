@@ -38,4 +38,30 @@ plot(x=unitstates$year, y=unitstates$gdpPercap, xlab="year", ylab="GDP", main="G
 plot(x=mexico$year, y=mexico$gdpPercap, xlab="year", ylab="GDP", main="GDP by Year, Mexico" )
 ```
 
+## Get stats
+
+Examine summary statistics about life expectancy for all the continents
+Big differences across continents, highest mean in Oceania
+
+```{r grab_continent_summary_data}
+agg_gap_continent_mean <- aggregate(lifeExp~continent, data=gapM, FUN=mean)
+agg_gap_continent_min <- aggregate(lifeExp~continent, data=gapM, FUN=min)
+agg_gap_continent_max <- aggregate(lifeExp~continent, data=gapM, FUN=max)
+summ_continents <- cbind(agg_gap_continent_mean, agg_gap_continent_min[ ,2], agg_gap_continent_max[ , 2])
+colnames(summ_continents) <- c("continent", "mean", "min", "max")
+summ_continents
+```
+
+# Histograms
+
+Now we'll make a couple of histograms illustrating the distribution of life expectancies across countries
+
+```{r histograms}
+hist(gapM$lifeExp, xlab = "life expectancy", main = "Life Expectancy")
+hist(gapM$lifeExp, breaks = 50, xlab = "life expectancy", main = "Life Expectancy")
+```
+
+
+
+
 

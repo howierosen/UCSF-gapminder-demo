@@ -80,6 +80,7 @@ agg_gap_continent_min <- aggregate(lifeExp~continent, data=gapM, FUN=min)
 agg_gap_continent_max <- aggregate(lifeExp~continent, data=gapM, FUN=max)
 summ_continents <- cbind(agg_gap_continent_mean, agg_gap_continent_min[ ,2], agg_gap_continent_max[ , 2])
 colnames(summ_continents) <- c("continent", "mean", "min", "max")
+summ_continents
 
 # need to make a histogram of global life expectancies, and remake using smaller bins
 hist(gapM$lifeExp)
